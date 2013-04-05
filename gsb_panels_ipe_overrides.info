@@ -1,0 +1,9 @@
+name = GSB Panels IPE Overrides
+description = Overriding IPE availlable content.
+core = 7.x
+package = GSB
+
+version = "master-dev"
+project = "gsb_panels_ipe_overrides"
+datestamp = "1365187257"
+

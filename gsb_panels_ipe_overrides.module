@@ -19,3 +19,32 @@ function gsb_panels_ipe_overrides_ctools_content_subtype_alter(&$subtype, &$plug
   }
 }
 
+/**
+ * Implements hook_panels_ipe_region_links_alter().
+ */
+function gsb_panels_ipe_overrides_panels_ipe_region_links_alter(&$links, $context) {
+
+  global $user;
+
+  $can_create = array();
+
+  $can_create[] = user_access('create fieldable accordion', $user);
+  $can_create[] = user_access('create fieldable cta', $user);
+  $can_create[] = user_access('create fieldable existing_node', $user);
+  $can_create[] = user_access('create fieldable image_cta', $user);
+  $can_create[] = user_access('create fieldable links', $user);
+  $can_create[] = user_access('create fieldable people', $user);
+  $can_create[] = user_access('create fieldable quote', $user);
+  $can_create[] = user_access('create fieldable slideshow', $user);
+  $can_create[] = user_access('create fieldable social_feed', $user);
+  $can_create[] = user_access('create fieldable spotlight', $user);
+  $can_create[] = user_access('create fieldable text', $user);
+  $can_create[] = user_access('create fieldable video', $user);
+
+  if (!in_array(true, $can_create)) {
+    unset($links['add-pane']);
+  }
+  
+}
+
+

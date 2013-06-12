@@ -3,7 +3,7 @@
 /**
  * Implements hook_permission().
  */
-function gsb_panels_ipe_overriders_permission() {
+function gsb_panels_ipe_overrides_permission() {
   return array(
     'administer panelizer defaults in ipe' => array(
       'title' => t('Administer panelizer defaults in In-Place Editor'),

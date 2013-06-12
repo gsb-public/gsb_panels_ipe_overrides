@@ -1,6 +1,18 @@
 <?php
 
 /**
+ * Implements hook_permission().
+ */
+function gsb_panels_ipe_overriders_permission() {
+  return array(
+    'administer panelizer defaults in ipe' => array(
+      'title' => t('Administer panelizer defaults in In-Place Editor'),
+      'description' => t('Allow users to save panelized pages as defaults.'),
+    ),
+  );
+}
+
+/**
  * Implements hook_panels_ipe_region_links_alter().
  */
 function gsb_panels_ipe_overrides_panels_ipe_region_links_alter(&$links, $context) {
@@ -29,7 +41,22 @@ function gsb_panels_ipe_overrides_panels_ipe_region_links_alter(&$links, $contex
   }
 
   unset($links['add-pane']);
-  
+
 }
 
-
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function gsb_panels_ipe_overrides_form_panels_ipe_edit_control_form_alter(&$form, &$form_state) {
+  // Check if user has access to administer panelizer defaults, and if not
+  // we just unset restricted actions.
+  if (!user_access('administer panelizer defaults in ipe')) {
+    $form['buttons']['submit']['#value'] = t('Save');
+    if (isset($form['buttons']['save_default'])) {
+      unset($form['buttons']['save_default']);
+    }
+    if (isset($form['buttons']['revert_default'])) {
+      usset($form['buttons']['revert_default']);
+    }
+  };
+}

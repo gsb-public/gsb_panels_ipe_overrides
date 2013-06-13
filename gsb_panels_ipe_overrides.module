@@ -56,7 +56,7 @@ function gsb_panels_ipe_overrides_form_panels_ipe_edit_control_form_alter(&$form
       unset($form['buttons']['save_default']);
     }
     if (isset($form['buttons']['revert_default'])) {
-      usset($form['buttons']['revert_default']);
+      unset($form['buttons']['revert_default']);
     }
   };
 }

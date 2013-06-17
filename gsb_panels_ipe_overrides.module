@@ -15,6 +15,13 @@ function gsb_panels_ipe_overrides_permission() {
 /**
  * Implements hook_panels_ipe_region_links_alter().
  */
+
+/*
+ * Commenting this out now. We are going to assume that the user will always be able to add 
+ * some pane to the panelized page. In the future if that doesn't prove to be still the case
+ * we can uncomment this code.
+ *
+ *
 function gsb_panels_ipe_overrides_panels_ipe_region_links_alter(&$links, $context) {
 
   global $user;
@@ -43,6 +50,7 @@ function gsb_panels_ipe_overrides_panels_ipe_region_links_alter(&$links, $contex
   unset($links['add-pane']);
 
 }
+*/
 
 /**
  * Implements hook_form_FORM_ID_alter().

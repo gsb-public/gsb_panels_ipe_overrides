@@ -68,3 +68,8 @@ function gsb_panels_ipe_overrides_form_panels_ipe_edit_control_form_alter(&$form
     }
   };
 }
+
+//hide save as page default button from panels-change-layout
+function gsb_panels_ipe_overrides_form_panels_change_layout_alter(&$form, &$form_state, $form_id) {
+  $form['save_default']['#access'] = FALSE;
+}
